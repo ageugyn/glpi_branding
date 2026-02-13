@@ -1,0 +1,30 @@
+{
+    "name": "glpiplugins/branding",
+    "description": "Advanced branding plugin for GLPI 11 - Customize logos, colors, themes with day/night schedule",
+    "type": "glpi-plugin",
+    "license": "GPL-2.0-or-later",
+    "version": "2.0.1",
+    "authors": [
+        {
+            "name": "Branding Plugin Team",
+            "homepage": "https://github.com/pluginsGLPI/branding"
+        }
+    ],
+    "keywords": [
+        "glpi",
+        "plugin",
+        "branding",
+        "theme",
+        "customization",
+        "logo"
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GlpiPlugin\\Branding\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

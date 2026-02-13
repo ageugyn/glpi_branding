@@ -1,0 +1,206 @@
+{#
+ # -------------------------------------------------------------------------
+ # Branding plugin for GLPI
+ # -------------------------------------------------------------------------
+ #
+ # LICENSE
+ #
+ # This file is part of Branding.
+ #
+ # Branding is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ #
+ # Branding is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with Branding. If not, see <http://www.gnu.org/licenses/>.
+ # -------------------------------------------------------------------------
+ # @copyright Copyright (C) 2025 by Branding plugin team.
+ # @license   GPLv2 https://www.gnu.org/licenses/gpl-2.0.html
+ # @link      https://github.com/pluginsGLPI/branding
+ # -------------------------------------------------------------------------
+ #}
+
+{% extends "generic_show_form.html.twig" %}
+{% import "components/form/fields_macros.html.twig" as fields %}
+
+{% set params = params|default({}) %}
+
+{% block form_fields %}
+    
+    {# General Settings #}
+    {{ fields.dropdownYesNo('enabled', item.fields['enabled'], __('Enable branding', 'branding'), {
+        'canedit': params['canedit']
+    }) }}
+
+    {{ fields.dropdownYesNo('is_recursive', item.fields['is_recursive'], __('Recursive'), {
+        'canedit': params['canedit']
+    }) }}
+
+    {{ fields.nullField() }}
+
+    {# Logo Files #}
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4>{{ __('Logos and Images', 'branding') }}</h4>
+        </div>
+        <div class="card-body">
+            {{ fields.fileField('logo_login', '', __('Login page logo', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+            {% if item.fields['logo_login'] %}
+                <div class="mb-3">
+                    <img src="{{ call('GlpiPlugin\\Branding\\Config::getFileUrl', [item.fields['logo_login']]) }}" 
+                         style="max-height: 100px;" 
+                         alt="Login Logo">
+                </div>
+            {% endif %}
+
+            {{ fields.fileField('logo_expanded', '', __('Sidebar logo (expanded)', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+            {% if item.fields['logo_expanded'] %}
+                <div class="mb-3">
+                    <img src="{{ call('GlpiPlugin\\Branding\\Config::getFileUrl', [item.fields['logo_expanded']]) }}" 
+                         style="max-height: 50px;" 
+                         alt="Expanded Logo">
+                </div>
+            {% endif %}
+
+            {{ fields.fileField('logo_collapsed', '', __('Sidebar logo (collapsed)', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+            {% if item.fields['logo_collapsed'] %}
+                <div class="mb-3">
+                    <img src="{{ call('GlpiPlugin\\Branding\\Config::getFileUrl', [item.fields['logo_collapsed']]) }}" 
+                         style="max-height: 50px;" 
+                         alt="Collapsed Logo">
+                </div>
+            {% endif %}
+
+            {{ fields.fileField('favicon', '', __('Favicon', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+            {% if item.fields['favicon'] %}
+                <div class="mb-3">
+                    <img src="{{ call('GlpiPlugin\\Branding\\Config::getFileUrl', [item.fields['favicon']]) }}" 
+                         style="max-height: 32px;" 
+                         alt="Favicon">
+                </div>
+            {% endif %}
+
+            {{ fields.fileField('background_login', '', __('Login page background', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+            {% if item.fields['background_login'] %}
+                <div class="mb-3">
+                    <img src="{{ call('GlpiPlugin\\Branding\\Config::getFileUrl', [item.fields['background_login']]) }}" 
+                         style="max-height: 150px;" 
+                         alt="Background">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {# Color Scheme #}
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4>{{ __('Color Scheme', 'branding') }}</h4>
+        </div>
+        <div class="card-body">
+            {{ fields.dropdownYesNo('schedule_enabled', item.fields['schedule_enabled'], __('Enable day/night schedule', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.timeField('day_start', item.fields['day_start'], __('Day theme starts at', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.timeField('night_start', item.fields['night_start'], __('Night theme starts at', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            <hr>
+
+            <h5>{{ __('Day Colors', 'branding') }}</h5>
+            {% set colors_day = item.fields['colors_day'] %}
+            
+            {{ fields.colorField('colors_day[primary]', colors_day.primary|default('#2c3e50'), __('Primary color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_day[secondary]', colors_day.secondary|default('#3498db'), __('Secondary color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_day[background]', colors_day.background|default('#f8f9fa'), __('Background color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_day[text]', colors_day.text|default('#212529'), __('Text color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_day[sidebar_bg]', colors_day.sidebar_bg|default('#343a40'), __('Sidebar background', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_day[sidebar_text]', colors_day.sidebar_text|default('#ffffff'), __('Sidebar text', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            <hr>
+
+            <h5>{{ __('Night Colors', 'branding') }}</h5>
+            {% set colors_night = item.fields['colors_night'] %}
+            
+            {{ fields.colorField('colors_night[primary]', colors_night.primary|default('#1a252f'), __('Primary color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_night[secondary]', colors_night.secondary|default('#2c3e50'), __('Secondary color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_night[background]', colors_night.background|default('#15202b'), __('Background color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_night[text]', colors_night.text|default('#e1e8ed'), __('Text color', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_night[sidebar_bg]', colors_night.sidebar_bg|default('#192734'), __('Sidebar background', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+
+            {{ fields.colorField('colors_night[sidebar_text]', colors_night.sidebar_text|default('#8899a6'), __('Sidebar text', 'branding'), {
+                'canedit': params['canedit']
+            }) }}
+        </div>
+    </div>
+
+    {# Custom CSS #}
+    <div class="card mt-3">
+        <div class="card-header">
+            <h4>{{ __('Custom CSS', 'branding') }}</h4>
+        </div>
+        <div class="card-body">
+            {{ fields.textareaField('custom_css', item.fields['custom_css'], __('Custom CSS code', 'branding'), {
+                'canedit': params['canedit'],
+                'rows': 15
+            }) }}
+            
+            <div class="alert alert-info mt-2">
+                <i class="fas fa-info-circle"></i>
+                {{ __('Add custom CSS rules here. They will be applied after the color scheme.', 'branding') }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

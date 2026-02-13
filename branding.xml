@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <name>Branding</name>
+    <key>branding</key>
+    <state>stable</state>
+    <logo>https://raw.githubusercontent.com/pluginsGLPI/branding/main/branding.png</logo>
+    <description>
+        <short>
+            <en>Advanced branding and customization plugin for GLPI</en>
+            <pt_BR>Plugin avançado de personalização visual para GLPI</pt_BR>
+        </short>
+        <long>
+            <en><![CDATA[
+# Branding Plugin for GLPI 11
+
+Complete visual customization solution for GLPI with support for:
+
+- **Custom logos** (login, sidebar expanded/collapsed, favicon)
+- **Automatic day/night themes** with scheduled switching
+- **Custom color schemes** (6 colors each for day and night themes)
+- **Custom CSS editor** for advanced styling
+- **Multi-entity support** with recursion
+- **REST API** for external integrations
+- **Emergency recovery mode** (?disable_branding=1)
+
+## Features
+
+### Visual Customization
+- Replace all GLPI logos with your own branding
+- Upload custom login page background
+- Configure favicon
+
+### Theme Management
+- Two complete color schemes (day and night)
+- Automatic switching based on time
+- Configurable start times for each theme
+- 6 color customization options per theme
+
+### Advanced Features
+- Custom CSS editor for fine-tuning
+- Per-entity configuration
+- Recursive inheritance
+- REST API for external access
+- Emergency bypass mode
+
+Perfect for:
+- Companies wanting to white-label GLPI
+- MSPs managing multiple clients
+- Organizations with strict branding requirements
+- Dark mode enthusiasts
+            ]]></en>
+            <pt_BR><![CDATA[
+# Plugin Branding para GLPI 11
+
+Solução completa de personalização visual para GLPI com suporte a:
+
+- **Logos personalizados** (login, sidebar expandida/colapsada, favicon)
+- **Temas dia/noite automáticos** com alternância agendada
+- **Esquemas de cores customizados** (6 cores para cada tema)
+- **Editor de CSS customizado** para estilização avançada
+- **Suporte multi-entidade** com recursão
+- **API REST** para integrações externas
+- **Modo de recuperação de emergência** (?disable_branding=1)
+
+## Funcionalidades
+
+### Personalização Visual
+- Substitua todos os logos do GLPI pela sua marca
+- Faça upload de background customizado para página de login
+- Configure o favicon
+
+### Gerenciamento de Temas
+- Dois esquemas de cores completos (dia e noite)
+- Alternância automática baseada em horário
+- Horários configuráveis para início de cada tema
+- 6 opções de personalização de cor por tema
+
+### Recursos Avançados
+- Editor de CSS customizado para ajustes finos
+- Configuração por entidade
+- Herança recursiva
+- API REST para acesso externo
+- Modo de bypass de emergência
+
+Perfeito para:
+- Empresas que querem white-label no GLPI
+- MSPs gerenciando múltiplos clientes
+- Organizações com requisitos rígidos de branding
+- Entusiastas do modo escuro
+            ]]></pt_BR>
+        </long>
+    </description>
+    <homepage>https://github.com/pluginsGLPI/branding</homepage>
+    <download>https://github.com/pluginsGLPI/branding/releases</download>
+    <issues>https://github.com/pluginsGLPI/branding/issues</issues>
+    <readme>https://github.com/pluginsGLPI/branding/blob/main/README.md</readme>
+    <authors>
+        <author>Branding Plugin Team</author>
+    </authors>
+    <versions>
+        <version>
+            <num>2.0.1</num>
+            <compatibility>
+                <version>11.0</version>
+            </compatibility>
+            <download_url>https://github.com/pluginsGLPI/branding/releases/download/v2.0.1/glpi-branding-2.0.1.tar.gz</download_url>
+        </version>
+    </versions>
+    <langs>
+        <lang>en_GB</lang>
+        <lang>pt_BR</lang>
+    </langs>
+    <license>GPLv2+</license>
+    <tags>
+        <en>
+            <tag>branding</tag>
+            <tag>theme</tag>
+            <tag>customization</tag>
+            <tag>logo</tag>
+            <tag>colors</tag>
+            <tag>dark-mode</tag>
+        </en>
+        <pt_BR>
+            <tag>personalização</tag>
+            <tag>tema</tag>
+            <tag>customização</tag>
+            <tag>logo</tag>
+            <tag>cores</tag>
+            <tag>modo-escuro</tag>
+        </pt_BR>
+    </tags>
+    <screenshots>
+        <screenshot>https://raw.githubusercontent.com/pluginsGLPI/branding/main/screenshots/config.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/pluginsGLPI/branding/main/screenshots/login.png</screenshot>
+        <screenshot>https://raw.githubusercontent.com/pluginsGLPI/branding/main/screenshots/sidebar.png</screenshot>
+    </screenshots>
+</root>
